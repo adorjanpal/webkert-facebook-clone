@@ -3,7 +3,7 @@
     <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
         <input formControlName="email" matInput placeholder="Enter your email" type="email" required>
-        <mat-error >Please enter a valid email</mat-error>
+        <mat-error>Please enter a valid email</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -19,3 +19,6 @@
     </div>
 </form>
 
+@if (isLoading) {
+    <app-spinner></app-spinner>
+}

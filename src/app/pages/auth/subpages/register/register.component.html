@@ -25,4 +25,8 @@
         <span>Already have an account?</span>
         <a (click)="switchPage()" mat-button>LOGIN</a>
     </div>
-    </form>
+</form>
+
+@if (isLoading) {
+    <app-spinner></app-spinner>
+}

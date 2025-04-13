@@ -1,0 +1,9 @@
+<div class="flex items-center justify-center p-3">
+    <span matSnackBarLabel class="text-red-400">{{ message }}</span>
+    
+    <button class="flex" mat-button matSnackBarAction (click)="snackBarRef.dismissWithAction()">
+        <app-svg class="size-5 bg-red-400" path="close.svg"></app-svg>
+    </button>
+</div>
+  
+  

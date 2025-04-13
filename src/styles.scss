@@ -4,13 +4,21 @@
 @import 'tailwindcss/utilities';
 
 html {
-    color-scheme: dark;
-    @include mat.theme((
-      color: mat.$azure-palette,
-      typography: Roboto,
-      density: 0
-    ));
-  }
+  color-scheme: dark;
+  @include mat.theme((
+    color: mat.$azure-palette,
+    typography: Roboto,
+    density: 0
+  ));
+}
+
+//snackbar
+:root {
+  @include mat.snack-bar-overrides((
+    container-color: var(--mat-sys-background),
+    supporting-text-color: red,
+  ));
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
