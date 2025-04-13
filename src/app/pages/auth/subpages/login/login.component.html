@@ -1,0 +1,21 @@
+<form [formGroup]="form" class="flex flex-col gap-2 items-center">
+    <span class="text-3xl mb-5">LOGIN</span>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput placeholder="Enter your email" type="email" required>
+        <mat-error >Please enter a valid email</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput placeholder="Enter your password" type="password" required>
+        <mat-error >Password is required</mat-error>
+    </mat-form-field>
+
+    <button (click)="handleSubmit()" class="w-full" [ngClass]="{'opacity-55 pointer-events-none' : form.invalid}" mat-flat-button type="submit">LOGIN</button>
+    <div class="flex items-center text-xs">
+        <span>Don't have an account?</span>
+        <a (click)="switchPage()" mat-button>REGISTER</a>
+    </div>
+</form>
+

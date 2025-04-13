@@ -1,0 +1,28 @@
+<form [formGroup]="form" class="flex flex-col gap-2 items-center gradient-blue p-20 rounded-md">
+    <span class="text-3xl mb-6">REGISTER</span>
+    <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input formControlName="firstName" matInput placeholder="Enter your first name" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input formControlName="lastName" matInput placeholder="Enter your last name" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput placeholder="Enter your email" type="email" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput placeholder="Enter your password" type="password" required>
+    </mat-form-field>
+
+    <button (click)="handleSubmit()" [ngClass]="{'opacity-55 pointer-events-none' : form.invalid}" class="w-full" mat-flat-button color="primary" type="submit">REGISTER</button>
+    <div class="flex items-center gap-1 text-xs">
+        <span>Already have an account?</span>
+        <a (click)="switchPage()" mat-button>LOGIN</a>
+    </div>
+    </form>
