@@ -3,10 +3,11 @@ import { SvgComponent } from "../../shared/svg/svg.component";
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { HeaderService } from '../../services/header/header.service';
+import { PostCardComponent } from "../../shared/post-card/post-card.component";
 
 @Component({
   selector: 'app-home',
-  imports: [SvgComponent],
+  imports: [SvgComponent, PostCardComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

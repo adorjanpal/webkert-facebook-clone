@@ -1,3 +1,25 @@
-<div class="h-full w-full flex flex-col items-center border-r border-blue-400">
-    <p>left-sidebar works!</p>
+<div class="h-full w-full flex flex-col items-center py-5 justify-between bg-blue-1">
+    <div></div>
+    <div class="w-full items-center gap-2 flex flex-col">
+        <a routerLink="/" class="menu">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>  
+            <span>Home</span>
+        </a>
+        <a routerLink="/profile" class="menu">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person"></mat-icon>  
+            <span class="text-blue-2">Profile</span>
+        </a>
+        <a routerLink="/messages" class="menu">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="chat"></mat-icon>
+            <span>Messages</span>
+        </a>
+
+        <div class="menu">
+            <button mat-raised-button extended><mat-icon>add</mat-icon>New Post</button>
+        </div>
+    </div>
+    <div class="menu">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="logout"></mat-icon>
+        <span>Logout</span>
+    </div>
 </div>

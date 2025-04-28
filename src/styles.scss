@@ -23,6 +23,9 @@ html {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+body {
+  @apply text-blue-2
+}
 
 
 .title-font {
@@ -30,4 +33,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+}
+
+.card-responsive {
+  @apply lg:w-[20dvw] w-full sm:w-[50dvw]
+}
+
+.header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
 }
