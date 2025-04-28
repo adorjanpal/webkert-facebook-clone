@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { SvgComponent } from "../../shared/svg/svg.component";
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
+import { HeaderService } from '../../services/header/header.service';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +10,9 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   authService = inject(AuthService);
+  private headerService = inject(HeaderService);
   router = inject(Router);
 
   logout() {
@@ -19,5 +21,9 @@ export class HomeComponent {
         this.router.navigateByUrl('/auth');
       }
     });
+  }
+
+  ngOnInit(): void {
+    this.headerService.currentHeader = 'Home'
   }
 }

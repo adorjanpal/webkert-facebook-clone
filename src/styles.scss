@@ -4,7 +4,7 @@
 @import 'tailwindcss/utilities';
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
   @include mat.theme((
     color: mat.$azure-palette,
     typography: Roboto,
@@ -22,3 +22,12 @@ html {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+.title-font {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}

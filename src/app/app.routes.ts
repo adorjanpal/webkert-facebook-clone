@@ -10,8 +10,15 @@ export const routes: Routes = [
 
     {
         path: '',
-        pathMatch: 'full',
         loadComponent: () =>
-            import('./pages/home/home.component').then((m) => m.HomeComponent),
-    },
+          import('./layout/authorized/authorized.component').then(
+            (m) => m.AuthorizedComponent
+          ),
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('./layout/authorized/authorized.routes').then((m) => m.routes),
+          },
+        ],
+      },
 ];
