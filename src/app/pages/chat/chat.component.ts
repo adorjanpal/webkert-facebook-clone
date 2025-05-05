@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { HeaderService } from '../../services/header/header.service';
 
 @Component({
   selector: 'app-chat',
@@ -6,6 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss'
 })
-export class ChatComponent {
+export class ChatComponent implements OnInit {
+  private headerService = inject(HeaderService);
 
+  ngOnInit(): void {
+    this.headerService.currentHeader = 'Messages';
+  }
 }

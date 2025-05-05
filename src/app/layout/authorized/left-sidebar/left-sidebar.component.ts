@@ -1,15 +1,37 @@
-import { Component } from '@angular/core';
-import { SvgComponent } from "../../../shared/svg/svg.component";
+import { Component, inject } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { CreatePostFormComponent } from './components/create-post-form/create-post-form.component';
+import {MatInputModule} from '@angular/material/input';
+
 
 @Component({
   selector: 'app-left-sidebar',
-  imports: [MatButtonModule, MatIconModule, RouterModule],
+  imports: [
+    MatButtonModule, 
+    MatIconModule, 
+    RouterModule,
+    MatInputModule,
+  ],
   templateUrl: './left-sidebar.component.html',
   styleUrl: './left-sidebar.component.scss'
 })
 export class LeftSidebarComponent {
+  private modal = inject(MatDialog);
 
+  openCreatePost() {
+    const modalRef = this.modal.open(CreatePostFormComponent, {
+      width: '400px',
+      data: {},
+    });
+
+    modalRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        console.log(result);
+        
+      }
+    })
+  }
 }

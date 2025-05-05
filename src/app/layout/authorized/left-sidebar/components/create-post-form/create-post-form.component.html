@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>New Post</h2>
+<mat-dialog-content>
+    <form [formGroup]="form">
+        <div class="w-full flex flex-col items-center">
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="name" />
+            </mat-form-field>
+        
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Say something interesting...</mat-label>
+                <input matInput formControlName="email" />
+            </mat-form-field>
+
+            <div class="p-2 self-start cursor-pointer bg-blue-1 rounded-full flex items-center justify-center">
+                <mat-icon color="accent" aria-hidden="false" aria-label="Example home icon" fontIcon="image"></mat-icon>  
+            </div>
+        </div>
+      </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="submit()">Submit</button>
+</mat-dialog-actions>

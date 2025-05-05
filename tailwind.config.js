@@ -9,11 +9,12 @@ module.exports = {
         'light-1': '#ffffff',
         'light-2': '#F6F0F0',
         'grey-1': '#EDF4FF',
+        'bluegray-1': '#8893A2',
         'dark-1': '#151515',
         'dark-2': '#030303',
         'blue-1': '#D5E0FA',
         'blue-2': '#374274',
-        'blue-3': '#F8F8F8',
+        'blue-3': '#E2EBFF',
       },
       
     },
