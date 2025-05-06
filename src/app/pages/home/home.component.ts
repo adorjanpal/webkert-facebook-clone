@@ -4,17 +4,22 @@ import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { HeaderService } from '../../services/header/header.service';
 import { PostCardComponent } from "../../shared/post-card/post-card.component";
+import { PostService } from '../../services/post/post.service';
+import { Post } from '../../types/class/post.class';
 
 @Component({
   selector: 'app-home',
-  imports: [SvgComponent, PostCardComponent],
+  imports: [PostCardComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
-  authService = inject(AuthService);
+  private authService = inject(AuthService);
   private headerService = inject(HeaderService);
-  router = inject(Router);
+  private postService = inject(PostService);
+  private router = inject(Router);
+
+  posts: Array<Post> = [];
 
   logout() {
     this.authService.logout().subscribe({
@@ -24,7 +29,20 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  getPosts() {
+    this.postService.getByUser(this.authService.currentUserSig()!.email).subscribe({
+      next: (response: any) => {        
+        this.posts = response;        
+      },
+      error: (error) => {
+        console.log(error);
+        
+      }
+    });
+  }
+
   ngOnInit(): void {
-    this.headerService.currentHeader = 'Home'
+    this.headerService.currentHeader = 'Home';
+    this.getPosts();
   }
 }

@@ -1,5 +1,5 @@
-<div  class="h-full w-full flex flex-col items-center gap-3">
-    <app-post-card></app-post-card>
-    <app-post-card></app-post-card>
-    <app-post-card></app-post-card>
+<div  class="h-full w-full flex flex-col items-center gap-3 pt-5">
+   @for (post of posts; track $index) {
+    <app-post-card [post]="post"></app-post-card>
+   }
 </div>

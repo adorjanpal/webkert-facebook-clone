@@ -15,6 +15,20 @@ export class User {
         this._following = following;
     }
 
+   
+    toJSON(): object {
+      return {
+          email: this._email,
+          firstName: this._firstName,
+          lastName: this._lastName,
+          followers: this._followers.map(user => user.toJSON ? user.toJSON() : user),
+          following: this._following.map(user => user.toJSON ? user.toJSON() : user)
+      };
+    }
+    
+      
+    
+
     get followers(): Array<User> {
       return this._followers;
     }

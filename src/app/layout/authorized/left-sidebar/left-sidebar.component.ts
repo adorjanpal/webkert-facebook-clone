@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CreatePostFormComponent } from './components/create-post-form/create-post-form.component';
 import {MatInputModule} from '@angular/material/input';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -28,10 +29,7 @@ export class LeftSidebarComponent {
     });
 
     modalRef.afterClosed().subscribe((result: any) => {
-      if (result) {
-        console.log(result);
-        
-      }
+        window.location.reload();
     })
   }
 }

@@ -3,12 +3,15 @@ import { Auth, createUserWithEmailAndPassword, updateProfile, user } from '@angu
 import { User } from '../../types/class/user.class';
 import { from, Observable } from 'rxjs';
 import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { Firestore } from '@angular/fire/firestore';
+import { addDoc, collection } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   firebaseAuth = inject(Auth);
+  firestore = inject(Firestore);
   user$ = user(this.firebaseAuth);
   currentUserSig = signal<{email: string} | null | undefined>(undefined);
 
@@ -17,7 +20,8 @@ export class AuthService {
   register(email: string, firstName: string, lastName: string, password: string): Observable<void> {
     const fireRegResult = createUserWithEmailAndPassword(this.firebaseAuth, email, password)
       .then((response) => {
-        updateProfile(response.user, {displayName: `${firstName} ${lastName}`});
+        const createdUser = new User(email, '', firstName, lastName).toJSON();
+        addDoc(collection(this.firestore, 'users'), createdUser);        
       })
 
       return from(fireRegResult);

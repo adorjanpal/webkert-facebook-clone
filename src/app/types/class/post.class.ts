@@ -2,15 +2,15 @@ import { User } from "./user.class";
 
 export class Post {
     private _author: User;
-    private _text: string;
+    private _content: string;
     private _image: string;
     private _likers: Array<User>;
     private _comments: Array<Comment>;
     private _date: Date;
 
-  constructor(author: User = new User(), text: string = '', image: string = '', likers: Array<User> = [], comments: Array<Comment> = [], date: Date = new Date()) {
+  constructor(author: User = new User(), content: string = '', image: string = '', likers: Array<User> = [], comments: Array<Comment> = [], date: Date = new Date()) {
     this._author = author;
-    this._text = text;
+    this._content = content;
     this._image = image;
     this._likers = likers;
     this._comments = comments;
@@ -33,12 +33,12 @@ export class Post {
     this._author = value;
   }
 
-  get text(): string {
-    return this._text;
+  get content(): string {
+    return this._content;
   }
 
-  set text(value: string) {
-    this._text = value;
+  set content(value: string) {
+    this._content = value;
   }
 
   get image(): string {

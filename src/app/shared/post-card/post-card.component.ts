@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import { Post } from '../../types/class/post.class';
 
 @Component({
   selector: 'app-post-card',
@@ -9,5 +10,5 @@ import {MatCardModule} from '@angular/material/card';
   styleUrl: './post-card.component.scss'
 })
 export class PostCardComponent {
-
+  @Input() post: Post = new Post(); 
 }
