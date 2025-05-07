@@ -7,24 +7,28 @@
         </form>
         @if (users$|async) {
             @for (user of users$|async; track $index) {
-               @if (user.email.includes(form.controls['query'].value)) {
-                <div class="flex items-center bg-blue-3 p-3 rounded-md justify-between">
-                    <div class="flex items-center gap-2">
-                        <div mat-card-avatar class="header-image p-0 !m-0"></div>
-                        <span>{{ user.email }}</span>
-                    </div>
-                    
-                    @if (loader?.isLoading && loader?.emails?.includes(user.email)) {
-                        <div class="flex h-5 w-5 border-t-2 border-r-2 border-blue-2 rounded-full animate-spin"></div>
-                    } @else {
-                        @if (user.isFollowedBy(authService.currentUserSig()?.email)) {
-                            <button (click)="unfollow(user.email)" mat-button>Unfollow</button>
+               <div class="flex w-full h-full gap-2">
+                @if (user.email.includes(form.controls['query'].value)) {
+                    <div class="flex w-full items-center bg-blue-3 p-3 rounded-md justify-between">
+                        <div (click)="navToUser(user.email)" class="flex items-center gap-2">
+                            <div mat-card-avatar class="header-image p-0 !m-0"></div>
+                            <span>{{ user.email }}</span>
+                        </div>
+                        
+                        @if (loader?.isLoading && loader?.emails?.includes(user.email)) {
+                            <div class="flex h-5 w-5 border-t-2 border-r-2 border-blue-2 rounded-full animate-spin"></div>
                         } @else {
-                            <button (click)="follow(user.email)" mat-button>Follow</button>
+                            @if (user.email !== this.authService.currentUserSig()?.email) {
+                                @if (user.isFollowedBy(authService.currentUserSig()?.email)) {
+                                    <button (click)="unfollow(user.email)" mat-button>Unfollow</button>
+                                } @else {
+                                    <button (click)="follow(user.email)" mat-button>Follow</button>
+                                }
+                            }
                         }
-                    }
-                </div>
-               } 
+                    </div>
+                   } 
+               </div>
             }
         } 
 </mat-dialog-content>

@@ -14,6 +14,12 @@ export const routes: Routes = [
             import('../../pages/profile/profile.component').then((m) => m.ProfileComponent),
     },
     {
+        path: 'profile/:email',
+        pathMatch: 'full',
+        loadComponent: () =>
+            import('../../pages/profile/profile.component').then((m) => m.ProfileComponent),
+    },
+    {
         path: 'messages',
         pathMatch: 'full',
         loadComponent: () =>

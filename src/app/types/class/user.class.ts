@@ -92,4 +92,8 @@ export class User {
     isFollowedBy(email: string) {     
       return this.followers.find((user: User) => user.email === email);
     }
+
+    getWholeName() {
+      return `${this._firstName} ${this._lastName}`;
+    }
 }

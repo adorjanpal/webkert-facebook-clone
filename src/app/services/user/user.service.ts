@@ -24,6 +24,16 @@ export class UserService {
     )
   }
 
+  get = (email: string) => {
+    return collectionData(
+      query(collection(this.firestore, 'users'), where('email', '==', email))
+    ).pipe(
+      map((docData: any) => {
+        return User.fromJSON(docData[0]);
+      })
+    );
+  }
+
   toggleFollow = (currentUser: string, userToFollow: string, isFollow: boolean): Observable<void> => {
     const userCollection = collection(this.firestore, 'users');
     const q1 = query(userCollection, where('email', '==', currentUser), limit(1));
