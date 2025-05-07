@@ -10,7 +10,7 @@
                <div class="flex w-full h-full gap-2">
                 @if (user.email.includes(form.controls['query'].value)) {
                     <div class="flex w-full items-center bg-blue-3 p-3 rounded-md justify-between">
-                        <div (click)="navToUser(user.email)" class="flex items-center gap-2">
+                        <div (click)="navToUser(user.email)" class="flex items-center gap-2 cursor-pointer">
                             <div mat-card-avatar class="header-image p-0 !m-0"></div>
                             <span>{{ user.email }}</span>
                         </div>

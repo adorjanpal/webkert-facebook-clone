@@ -2,7 +2,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, updateProfile, user } from '@angular/fire/auth';
 import { User } from '../../types/class/user.class';
 import { from, Observable } from 'rxjs';
-import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { browserLocalPersistence, onAuthStateChanged, setPersistence, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { Firestore } from '@angular/fire/firestore';
 import { addDoc, collection } from 'firebase/firestore';
 
@@ -16,6 +16,16 @@ export class AuthService {
   currentUserSig = signal<{email: string} | null | undefined>(undefined);
 
   constructor() { }
+
+  isAuthenticated() {
+    onAuthStateChanged(this.firebaseAuth, (user) => {
+      if (user) {
+        this.currentUserSig.set({
+          email: user.email!,
+        })
+      }
+    })
+  }
 
   register(email: string, firstName: string, lastName: string, password: string): Observable<void> {
     const fireRegResult = createUserWithEmailAndPassword(this.firebaseAuth, email, password)

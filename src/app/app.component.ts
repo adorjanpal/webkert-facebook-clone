@@ -12,14 +12,6 @@ export class AppComponent implements OnInit {
   authService = inject(AuthService);
 
   ngOnInit(): void {
-    this.authService.user$.subscribe((user) => {
-      if (user) {
-        this.authService.currentUserSig.set({
-          email: user.email!
-        });
-      } else {
-        this.authService.currentUserSig.set(null);
-      }
-    })
+    this.authService.isAuthenticated();
   }
 }

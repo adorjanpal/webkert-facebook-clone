@@ -53,7 +53,9 @@ export class RegisterComponent {
       })
     ).subscribe({
       next: () => {
-        this.router.navigateByUrl('/');
+        setTimeout(() => {
+          this.router.navigateByUrl('/');
+        }, 1000);
       },
       error: () => {
         this.openSnackBar();

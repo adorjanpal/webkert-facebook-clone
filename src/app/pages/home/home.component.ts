@@ -21,14 +21,6 @@ export class HomeComponent implements OnInit {
 
   posts: Array<Post> = [];
 
-  logout() {
-    this.authService.logout().subscribe({
-      next: () => {
-        this.router.navigateByUrl('/auth');
-      }
-    });
-  }
-
   getPosts() {
     this.postService.getByUser(this.authService.currentUserSig()!.email).subscribe({
       next: (response: any) => {        

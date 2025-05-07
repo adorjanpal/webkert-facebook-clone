@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreatePostFormComponent } from './components/create-post-form/create-post-form.component';
 import {MatInputModule} from '@angular/material/input';
 import { Location } from '@angular/common';
+import { AuthService } from '../../../services/auth/auth.service';
 
 
 @Component({
@@ -21,6 +22,15 @@ import { Location } from '@angular/common';
 })
 export class LeftSidebarComponent {
   private modal = inject(MatDialog);
+  private authService = inject(AuthService);
+
+  logout() {
+    this.authService.logout().subscribe({
+      next: () => {
+        window.location.reload();
+      }
+    });
+  }
 
   openCreatePost() {
     const modalRef = this.modal.open(CreatePostFormComponent, {

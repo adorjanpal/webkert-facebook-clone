@@ -51,7 +51,9 @@ export class LoginComponent {
       })
     ).subscribe({
       next: () => {
-        this.router.navigateByUrl('/');
+        setTimeout(() => {
+          this.router.navigateByUrl('/');
+        }, 1000);
       },
       error: (error) => {
         this.form.reset();
