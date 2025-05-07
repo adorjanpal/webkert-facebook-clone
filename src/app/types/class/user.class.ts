@@ -1,3 +1,5 @@
+import { Post } from "./post.class";
+
 export class User {
     private _id: string;
     private _email: string;
@@ -6,8 +8,9 @@ export class User {
     private _lastName: string;
     private _followers: Array<User>;
     private _following: Array<User>;
+    private _likedPosts: Array<Post>;
 
-  constructor(email: string = '', password: string = '', firstName: string = '', lastName: string = '', following: Array<User> = [], followers: Array<User> = [], id: string = '') {
+  constructor(email: string = '', password: string = '', firstName: string = '', lastName: string = '', following: Array<User> = [], followers: Array<User> = [], id: string = '', likedPosts: Array<Post> = []) {
         this._email = email;
         this._password = password;
         this._firstName = firstName;
@@ -15,6 +18,7 @@ export class User {
         this._followers = followers;
         this._following = following;
         this._id = id;
+        this._likedPosts = likedPosts;
     }
 
    
@@ -25,7 +29,7 @@ export class User {
           firstName: this._firstName,
           lastName: this._lastName,
           followers: this._followers.map(user => user.toJSON ? user.toJSON() : user),
-          following: this._following.map(user => user.toJSON ? user.toJSON() : user)
+          following: this._following.map(user => user.toJSON ? user.toJSON() : user),
       };
     }
 
