@@ -1,0 +1,30 @@
+<mat-dialog-content class="relative">
+        <form [formGroup]="form">
+        <div class="w-full flex items-center my-3">
+            <input class="w-full rounded-full bg-blue-1 self-start text-blue-2 pl-3 py-1 outline-none" placeholder="search..." formControlName="query" />
+            <mat-icon class="cursor-pointer absolute top-1 right-3" (click)="close()" fontIcon="close"></mat-icon>
+        </div>
+        </form>
+        @if (users$|async) {
+            @for (user of users$|async; track $index) {
+               @if (user.email.includes(form.controls['query'].value)) {
+                <div class="flex items-center bg-blue-3 p-3 rounded-md justify-between">
+                    <div class="flex items-center gap-2">
+                        <div mat-card-avatar class="header-image p-0 !m-0"></div>
+                        <span>{{ user.email }}</span>
+                    </div>
+                    
+                    @if (loader?.isLoading && loader?.emails?.includes(user.email)) {
+                        <div class="flex h-5 w-5 border-t-2 border-r-2 border-blue-2 rounded-full animate-spin"></div>
+                    } @else {
+                        @if (user.isFollowedBy(authService.currentUserSig()?.email)) {
+                            <button (click)="unfollow(user.email)" mat-button>Unfollow</button>
+                        } @else {
+                            <button (click)="follow(user.email)" mat-button>Follow</button>
+                        }
+                    }
+                </div>
+               } 
+            }
+        } 
+</mat-dialog-content>
